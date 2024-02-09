@@ -21,6 +21,8 @@ final class NetworkManager{
         
         var bookURL = searchURL + searchFilter + searchSpecifier
         
+        print(bookURL)
+        
         guard let url = URL(string: bookURL) else {
             completed(.failure(.invalidURL))
             return
@@ -47,6 +49,7 @@ final class NetworkManager{
                 let decodedResponse = try decoder.decode(BookList.self, from: data)
                 completed(.success(decodedResponse.items))
             } catch {
+                print("Error decoding response:", error.localizedDescription)
                 completed(.failure(.invalidData))
             }
         }

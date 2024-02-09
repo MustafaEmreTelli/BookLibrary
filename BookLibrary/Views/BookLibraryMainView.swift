@@ -36,7 +36,7 @@ struct BookLibraryMainView: View {
         }
         
         .sheet(isPresented: $isDetailViewOpen, content: {
-            BookLibraryMainBookCell(Books: viewModel.selectedBook)
+            BookLibraryMainDetailView(Books: viewModel.selectedBook)
         })
     }
 }
