@@ -15,15 +15,22 @@ struct BookLibraryMainView: View {
         NavigationStack {
             VStack {
                 HStack {
-                    Button("By Author"){
+                    Button(" Author", systemImage: "person"){
                         viewModel.changeToAuthor()
+                        viewModel.getBookData()
                     }
-                    Button("By Title"){
+                    .foregroundColor(viewModel.searchFilter == "+inauthor:" ? .green : .gray)
+                    
+                    Button("Title", systemImage: "text.quote"){
                         viewModel.changeToTitle()
                     }
-                    Button("By Category"){
+                    .foregroundColor(viewModel.searchFilter == "+intitle:" ? .green : .gray)
+                    
+                    
+                    Button("Category", systemImage: "fish.fill"){
                         viewModel.changeToCategory()
                     }
+                    .foregroundColor(viewModel.searchFilter == "+incategory:" ? .green : .gray)
                 }
                 .buttonStyle(.bordered)
                 
@@ -38,11 +45,14 @@ struct BookLibraryMainView: View {
                                 }
                         }
                     }
+                    .navigationBarTitleDisplayMode(.inline)
                     .navigationTitle("Book Library 📖")
+                    
                 }
                 .onAppear{
                     viewModel.getBookData()
                 }
+                
             }
         }
         .searchable(text: $viewModel.searchText, prompt: "Search Books")
