@@ -41,6 +41,8 @@ struct BookLibraryMainDetailView: View {
     }
 }
 
+
+
 #Preview {
     BookLibraryMainDetailView(Books: MockBookLibrary.mockBook)
 }

@@ -10,6 +10,7 @@ import SwiftUI
 
 final class BookLibraryMainViewModel: ObservableObject {
     @Published var searchText = ""
+    @Published var searchFilter = "+inauthor:"
     
     let columns: [GridItem] = [GridItem(), GridItem()]
     
@@ -17,7 +18,7 @@ final class BookLibraryMainViewModel: ObservableObject {
     @Published var selectedBook: Books = MockBookLibrary.mockBook
     
     func getBookData() {
-        NetworkManager.shared.getBookData(searchSpecifier: searchText){ result in
+        NetworkManager.shared.getBookData(searchSpecifier: searchText, searchFilter: searchFilter){ result in
             DispatchQueue.main.async{
                 switch result {
                 case .success(let Books):
@@ -29,5 +30,16 @@ final class BookLibraryMainViewModel: ObservableObject {
         }
     }
     
+    func changeToTitle() {
+        searchFilter = "+intitle:"
+    }
+    
+    func changeToAuthor() {
+        searchFilter = "+inauthor:"
+    }
+    
+    func changeToCategory() {
+        searchFilter = "+incategory:"
+    }
     
 }

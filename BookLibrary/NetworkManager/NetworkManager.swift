@@ -14,12 +14,11 @@ final class NetworkManager{
     
     private init() {}
     
-    func getBookData(searchSpecifier: String, completed: @escaping (Result<[Books], BooksError>) -> Void) {
+    func getBookData(searchSpecifier: String, searchFilter: String, completed: @escaping (Result<[Books], BooksError>) -> Void) {
         
         let searchURL = "https://www.googleapis.com/books/v1/volumes?q="
-        var searchFilter: String = "+inauthor:"
         
-        var bookURL = searchURL + searchFilter + searchSpecifier
+        let bookURL = searchURL + searchFilter + searchSpecifier
         
         print(bookURL)
         

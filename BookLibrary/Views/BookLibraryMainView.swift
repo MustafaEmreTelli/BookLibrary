@@ -10,24 +10,39 @@ import SwiftUI
 struct BookLibraryMainView: View {
     @StateObject var viewModel = BookLibraryMainViewModel()
     @State var isDetailViewOpen = false
-
+    
     var body: some View {
         NavigationStack {
-            ScrollView{
-                LazyVGrid(columns: viewModel.columns){
-                    ForEach(viewModel.books){ Books in
-                        BookLibraryMainBookCell(Books: Books)
-                            .onTapGesture {
-                                print("\(Books.volumeInfo.title)")
-                                isDetailViewOpen = true
-                                viewModel.selectedBook = Books
-                            }
+            VStack {
+                HStack {
+                    Button("By Author"){
+                        viewModel.changeToAuthor()
+                    }
+                    Button("By Title"){
+                        viewModel.changeToTitle()
+                    }
+                    Button("By Category"){
+                        viewModel.changeToCategory()
                     }
                 }
-                .navigationTitle("Book Library 📖")
-            }
-            .onAppear{
-                viewModel.getBookData()
+                .buttonStyle(.bordered)
+                
+                ScrollView{
+                    LazyVGrid(columns: viewModel.columns){
+                        ForEach(viewModel.books){ Books in
+                            BookLibraryMainBookCell(Books: Books)
+                                .onTapGesture {
+                                    print("\(Books.volumeInfo.title)")
+                                    isDetailViewOpen = true
+                                    viewModel.selectedBook = Books
+                                }
+                        }
+                    }
+                    .navigationTitle("Book Library 📖")
+                }
+                .onAppear{
+                    viewModel.getBookData()
+                }
             }
         }
         .searchable(text: $viewModel.searchText, prompt: "Search Books")
