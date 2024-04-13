@@ -15,7 +15,7 @@ struct BookLibraryMainView: View {
         NavigationStack {
             VStack {
                 HStack {
-                    Button(" Author", systemImage: "person"){
+                    Button("Author", systemImage: "person"){
                         viewModel.changeToAuthor()
                         viewModel.getBookData()
                     }
@@ -23,12 +23,13 @@ struct BookLibraryMainView: View {
                     
                     Button("Title", systemImage: "text.quote"){
                         viewModel.changeToTitle()
+                        viewModel.getBookData()
                     }
                     .foregroundColor(viewModel.searchFilter == "+intitle:" ? .green : .gray)
                     
-                    
                     Button("Category", systemImage: "fish.fill"){
                         viewModel.changeToCategory()
+                        viewModel.getBookData()
                     }
                     .foregroundColor(viewModel.searchFilter == "+incategory:" ? .green : .gray)
                 }

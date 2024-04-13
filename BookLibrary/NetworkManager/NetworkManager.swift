@@ -18,7 +18,7 @@ final class NetworkManager{
         
         let searchURL = "https://www.googleapis.com/books/v1/volumes?q="
         
-        let bookURL = searchURL + searchFilter + searchSpecifier
+        let bookURL = searchURL + searchFilter + searchSpecifier 
         
         print(bookURL)
         
