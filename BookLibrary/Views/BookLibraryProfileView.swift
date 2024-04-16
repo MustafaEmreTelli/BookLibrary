@@ -10,7 +10,11 @@ import SwiftUI
 struct BookLibraryProfileView: View {
     var body: some View {
         NavigationStack{
-            Text("Profile")
+            VStack{
+                
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("Profile 📖")
         }
     }
 }

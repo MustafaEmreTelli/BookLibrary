@@ -16,7 +16,13 @@ struct BookLibraryTabView: View {
                     Text("Browse")
                 }
             
-            Text("Account")
+            BookLibraryReadingListView()
+                .tabItem {
+                    Image(systemName: "books.vertical")
+                    Text("Reading Lists")
+                }
+            
+            BookLibraryProfileView()
                 .tabItem {
                     Image(systemName: "person")
                     Text("Profile")
