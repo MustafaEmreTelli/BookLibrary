@@ -2,8 +2,8 @@ BookLibrary
 
 ### Technologies Used
 
-- **Swift:** 
-- **SwiftUI:** 
+- **Swift** 
+- **SwiftUI** 
 
 ### Images
 
